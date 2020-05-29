@@ -62,4 +62,12 @@ public class BookController {
         logger.info("Inserting initial data...");
         return bookRepository.saveAll(books);
     }
+
+    @PatchMapping("/books/{bookId}")
+    @ResponseStatus(HttpStatus.OK)
+    public Mono<Book> updateBook(@PathVariable String bookId, @RequestBody Book book) {
+        return bookRepository.findById(bookId)
+                .map(b -> {book.setId(bookId); return book;})
+                .flatMap(updatedBook -> bookRepository.save(updatedBook));
+    }
 }
