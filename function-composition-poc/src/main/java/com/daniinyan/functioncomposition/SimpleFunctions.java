@@ -13,6 +13,12 @@ public class SimpleFunctions {
     Function<Integer, Integer> divideByTwo = number -> number / 2;
     System.out.println(baseNumber + " / 2 = " + divideByTwo.apply(baseNumber));
 
+    Function<Integer, Integer> square = number -> number * number;
+
+    System.out.println("First multiply, then square: " + multiplyByTwo.andThen(square).apply(baseNumber));
+    System.out.println("First divide, then square: " + square.compose(divideByTwo).apply(baseNumber));
+    System.out.println("First divide, then multiply, then square: " + divideByTwo.andThen(multiplyByTwo).andThen(square).apply(baseNumber));
+    System.out.println("First multiply, then square, then divide: " + square.compose(multiplyByTwo).andThen(divideByTwo).apply(baseNumber));
   }
 
 }
