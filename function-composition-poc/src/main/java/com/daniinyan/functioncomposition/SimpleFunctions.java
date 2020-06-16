@@ -2,7 +2,7 @@ package com.daniinyan.functioncomposition;
 
 import java.util.function.Function;
 
-public class Application {
+public class SimpleFunctions {
 
   public static void main(String[] args) {
 
@@ -12,6 +12,7 @@ public class Application {
 
     Function<Integer, Integer> divideByTwo = number -> number / 2;
     System.out.println(baseNumber + " / 2 = " + divideByTwo.apply(baseNumber));
+
   }
 
 }
